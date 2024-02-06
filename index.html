@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasz Ślub</title>
+    <body background="tlo.jpg"></body>
+    
+    <style>
+  
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .countdown {
+            text-align: center;
+        }
+        .countdown h1 {
+            font-size: 3em;
+            color: #000000;
+        }
+        .countdown p {
+            font-size: 2em;
+            color: #000000;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <h1>Monia & Mati</h1>
+        <h1> Ślub za:</h1>
+        <div id="timer"></div>
+    </div>
+
+    <script>
+        // Ustaw datę ślubu
+        const weddingDate = new Date('2025-09-20T12:00:00').getTime();
+
+        // Aktualizuj co sekundę
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            // Obliczanie dni, godzin, minut i sekund
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Wyświetlanie czasu na stronie
+            document.getElementById('timer').innerHTML = `
+                <p>${days} dni</p>
+                <p>${hours} godzin</p>
+                <p>${minutes} minut</p>
+                <p>${seconds} sekund</p>
+            `;
+            
+            // Zatrzymaj odliczanie, gdy datę ślubu przekroczy
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('timer').innerHTML = "<p>Ślub już się odbył!</p>";
+            }
+        }, 1000);
+        
+    </script>
+    
+</body>
+</html>
