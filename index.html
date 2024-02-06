@@ -71,40 +71,7 @@
         }, 1000);
         
     </script>
-    <title>Wysyłanie SMS przez HTML</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#sendSMS").click(function(){
-                var to = $("#to").val();
-                var message = $("#message").val();
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'send_sms.php', // Plik PHP, który wyśle zapytanie do Twilio API
-                    data: {
-                        to: to,
-                        message: message
-                    },
-                    success: function(response){
-                        alert('SMS został wysłany!');
-                    },
-                    error: function(xhr, status, error){
-                        console.error(xhr.responseText);
-                        alert('Wystąpił błąd podczas wysyłania SMS-a.');
-                    }
-                });
-            });
-        });
-    </script>
-</head>
-<body>
-    <h2>Wysyłanie SMS przez HTML</h2>
-    <input type="text" id="to" placeholder="Numer telefonu odbiorcy"><br><br>
-    <textarea id="message" placeholder="Treść wiadomości"></textarea><br><br>
-    <button id="sendSMS">Wyślij SMS</button>
-</body>
-</html>
+    
     
 </body>
 </html>
